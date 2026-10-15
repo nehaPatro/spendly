@@ -1,0 +1,249 @@
+/* ================================================================ */
+/* Landing page hero section styles                                 */
+/* ================================================================ */
+
+.hero {
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: var(--accent-light);
+    color: var(--accent);
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    letter-spacing: 0.05em;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    margin: 0;
+    max-width: 900px;
+}
+
+.hero-title br + .hero-title-accent,
+.hero-title-accent {
+    display: block;
+    color: var(--accent);
+}
+
+.hero-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 1rem;
+}
+
+.hero-actions .btn-primary {
+    border-radius: 999px;
+    padding: 0.7rem 1.8rem;
+}
+
+.hero-visual {
+    margin-top: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mock-card {
+    background: #e8e5de;
+    border-radius: 16px;
+    padding: 1.5rem;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.mock-card::before {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    display: flex;
+    gap: 8px;
+}
+
+.mock-card::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: 16px;
+    width: 72px;
+    height: 12px;
+    background:
+        radial-gradient(circle, #ff5f57 4px, transparent 4px),
+        radial-gradient(circle, #ffbd2e 4px, transparent 4px),
+        radial-gradient(circle, #28c940 4px, transparent 4px);
+    background-size: 8px 12px, 8px 12px, 8px 12px;
+    background-position: 0 0, 22px 0, 44px 0;
+    background-repeat: no-repeat;
+}
+
+.mock-card-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.stat-item {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+    text-transform: capitalize;
+    margin-bottom: 0.4rem;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--ink);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.stat-change {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+}
+
+.stat-change.positive {
+    color: #c17f24;
+}
+
+.mock-card-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.mock-bar-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.mock-cat {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.mock-bar-track {
+    height: 10px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.mock-bar {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.mock-bar-food {
+    background: #c17f24;
+}
+
+.mock-bar-travel {
+    background: #5b7fa6;
+}
+
+.mock-bar-bills {
+    background: #8b5e83;
+}
+
+/* ================================================================ */
+/* Responsive adjustments                                           */
+/* ================================================================ */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 3rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    .mock-card-stats {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 0.8rem;
+        width: 100%;
+    }
+
+    .hero-actions .btn-primary {
+        width: 100%;
+    }
+
+    .mock-bar-row {
+        grid-template-columns: 50px 1fr;
+        gap: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero {
+        padding: 2rem 1rem;
+    }
+
+    .hero-badge {
+        font-size: 0.75rem;
+    }
+
+    .mock-card {
+        padding: 1rem;
+    }
+
+    .stat-item {
+        padding: 1rem 0.75rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+}
