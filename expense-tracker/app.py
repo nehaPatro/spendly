@@ -10,7 +10,26 @@ app = Flask(__name__)
 @app.route("/")
 def landing():
     return render_template("landing.html")
+Add a modal to @templates/landing.html that opens when the user
+clicks
+"See how it works".
 
+Requirements:
+
+Clicking "See how it works" opens a modal overlay
+- Modal contains an embedded YouTube video (use any placeholder
+YouTube URL
+for now, I will replace it later)
+- Video should be playable inside the modal
+- Clicking the close button OR clicking outside the modal closes
+it
+- When the modal closes, the video must stop playing (not
+continue in background)
+- No page libraries or dependencies - vanilla JS only, since we
+are not
+using any JS framework in this project
+
+Do not modify any other part of the page.
 
 @app.route("/register")
 def register():
