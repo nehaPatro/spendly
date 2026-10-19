@@ -1,0 +1,100 @@
+{% extends "base.html" %}
+
+{% block title %}My Profile — Spendly{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/profile.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="profile-section">
+    <div class="profile-container">
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <span class="avatar-initial">{{ (user['name'].split()[0][0] + user['name'].split()[-1][0]).upper() }}</span>
+            </div>
+            <div class="profile-info">
+                <h1 class="profile-name">{{ user['name'] }}</h1>
+                <p class="profile-email">{{ user['email'] }}</p>
+                <p class="profile-since">Member since {{ user['created_at'][:10] }}</p>
+            </div>
+        </div>
+
+        <!-- Quick Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Spent</div>
+                <div class="stat-value">₹{{ "{:,.2f}".format(stats['total_spent']) }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Transactions</div>
+                <div class="stat-value">{{ stats['expense_count'] }}</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Top Category</div>
+                <div class="stat-value">{{ stats['top_category'] or '—' }}</div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Recent Transactions -->
+            <div class="recent-transactions-section">
+                <h2 class="section-title">Recent Transactions</h2>
+                {% if recent_transactions %}
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for txn in recent_transactions %}
+                        <tr>
+                            <td>{{ txn['date'] }}</td>
+                            <td>{{ txn['description'] }}</td>
+                            <td><span class="category-badge" data-category="{{ txn['category'] }}">{{ txn['category'] }}</span></td>
+                            <td class="amount">₹{{ "{:,.2f}".format(txn['amount']) }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p class="empty-message">No transactions yet.</p>
+                {% endif %}
+            </div>
+
+            <!-- Category Breakdown -->
+            <div class="category-breakdown-section">
+                <h2 class="section-title">By Category</h2>
+                {% if stats['by_category'] %}
+                <div class="category-list">
+                    {% for category, amount in stats['by_category'].items() %}
+                    <div class="category-item">
+                        <div class="category-info">
+                            <span class="category-name">{{ category }}</span>
+                            <span class="category-amount">₹{{ "{:,.2f}".format(amount) }}</span>
+                        </div>
+                        <div class="progress-bar">
+                            {% set percent = (amount / stats['total_spent'] * 100) if stats['total_spent'] > 0 else 0 %}
+                            <div class="progress-fill" style="width: {{ percent }}%; background-color: {{ category_colors[category] or '#1a472a' }}"></div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p class="empty-message">No expenses yet.</p>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}

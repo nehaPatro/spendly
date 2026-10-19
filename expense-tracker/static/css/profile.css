@@ -1,0 +1,335 @@
+/* ------------------------------------------------------------------ */
+/* Profile Page Styles                                                 */
+/* ------------------------------------------------------------------ */
+
+.profile-section {
+    padding: 2rem;
+    background: var(--paper);
+}
+
+.profile-container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+/* ------------------------------------------------------------------ */
+/* Profile Header                                                      */
+/* ------------------------------------------------------------------ */
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+.profile-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+    background: var(--accent);
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.avatar-initial {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+}
+
+.profile-info {
+    flex: 1;
+}
+
+.profile-name {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.25rem;
+}
+
+.profile-email {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.5rem;
+}
+
+.profile-since {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--ink-faint);
+}
+
+/* ------------------------------------------------------------------ */
+/* Stats Grid                                                          */
+/* ------------------------------------------------------------------ */
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    padding: 1.5rem;
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    text-align: center;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--ink);
+}
+
+/* ------------------------------------------------------------------ */
+/* Content Grid (Two Column)                                           */
+/* ------------------------------------------------------------------ */
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0 0 1.5rem 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Recent Transactions Table                                           */
+/* ------------------------------------------------------------------ */
+
+.recent-transactions-section {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+.transactions-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.transactions-table thead {
+    border-bottom: 1px solid var(--border);
+}
+
+.transactions-table th {
+    padding: 0.75rem;
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink-muted);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.transactions-table td {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-soft);
+    color: var(--ink);
+}
+
+.transactions-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.category-badge {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: var(--accent-light);
+    color: var(--accent);
+    border-radius: var(--radius-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.transactions-table .amount {
+    text-align: right;
+    color: var(--ink);
+    font-weight: 500;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--ink-muted);
+    padding: 2rem;
+    margin: 0;
+}
+
+/* ------------------------------------------------------------------ */
+/* Category Breakdown List                                             */
+/* ------------------------------------------------------------------ */
+
+.category-breakdown-section {
+    background: var(--paper-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+}
+
+.category-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.category-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.category-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-name {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink);
+}
+
+.category-amount {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--ink-muted);
+}
+
+.progress-bar {
+    height: 6px;
+    background: var(--border-soft);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive Design                                                   */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-section {
+        padding: 1rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+
+    .profile-name {
+        font-size: 1.3rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .transactions-table {
+        font-size: 0.85rem;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+        padding: 0.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-header {
+        padding: 1rem;
+    }
+
+    .profile-avatar {
+        width: 60px;
+        height: 60px;
+    }
+
+    .avatar-initial {
+        font-size: 1.25rem;
+    }
+
+    .profile-name {
+        font-size: 1.15rem;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .stat-label {
+        font-size: 0.7rem;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .transactions-table th:nth-child(2),
+    .transactions-table td:nth-child(2) {
+        display: none;
+    }
+
+    .transactions-table th,
+    .transactions-table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.75rem;
+    }
+}

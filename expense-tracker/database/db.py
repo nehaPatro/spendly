@@ -79,3 +79,53 @@ def seed_db():
 
     db.commit()
     db.close()
+
+
+def get_user_by_id(user_id):
+    db = get_db()
+    cursor = db.execute('SELECT id, name, email, created_at FROM users WHERE id = ?', (user_id,))
+    user = cursor.fetchone()
+    db.close()
+    return user
+
+
+def get_user_expense_stats(user_id):
+    db = get_db()
+
+    # Get total spent
+    cursor = db.execute('SELECT COALESCE(SUM(amount), 0) FROM expenses WHERE user_id = ?', (user_id,))
+    total_spent = cursor.fetchone()[0]
+
+    # Get expense count
+    cursor = db.execute('SELECT COUNT(*) FROM expenses WHERE user_id = ?', (user_id,))
+    expense_count = cursor.fetchone()[0]
+
+    # Get breakdown by category
+    cursor = db.execute(
+        'SELECT category, SUM(amount) FROM expenses WHERE user_id = ? GROUP BY category ORDER BY SUM(amount) DESC',
+        (user_id,)
+    )
+    by_category = {row[0]: row[1] for row in cursor.fetchall()}
+
+    # Get top category
+    top_category = list(by_category.keys())[0] if by_category else None
+
+    db.close()
+
+    return {
+        'total_spent': total_spent,
+        'expense_count': expense_count,
+        'by_category': by_category,
+        'top_category': top_category
+    }
+
+
+def get_recent_transactions(user_id, limit=5):
+    db = get_db()
+    cursor = db.execute(
+        'SELECT id, description, category, amount, date FROM expenses WHERE user_id = ? ORDER BY date DESC LIMIT ?',
+        (user_id, limit)
+    )
+    transactions = cursor.fetchall()
+    db.close()
+    return transactions
